@@ -38,9 +38,12 @@ public enum Haptic {
     case notification(HapticFeedbackType)
     case selection
     
+    /// Enable hapic feedback
+    public static var isEnabled = true
+    
     // trigger
     public func generate() {
-        guard #available(iOS 10, *) else { return }
+        guard #available(iOS 10, *), Self.isEnabled else { return }
         
         switch self {
         case .impact(let style):
